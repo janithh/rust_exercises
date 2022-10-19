@@ -1,2 +1,2 @@
-#Rust Exercises
+Rust Exercises
 ================
