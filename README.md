@@ -7,3 +7,5 @@ This project is for Rust exercises
 0.1.0 - Exercise 1 : Calculate the median
 
 0.2.0 - Exercise 2 : Find unique items
+
+0.3.0 - LeetCode : Check Sum
