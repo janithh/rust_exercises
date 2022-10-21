@@ -11,3 +11,5 @@ This project is for Rust exercises
 0.3.0 - LeetCode : Check Sum
 
 0.4.0 - Exercise 3 : Print any text type
+
+0.5.0 - LeetCode : Unique character
