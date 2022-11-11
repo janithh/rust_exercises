@@ -1,8 +1,5 @@
 
-type Message = Vec<Letter>;
-
-type Letter = Vec<Pulse>;
-
+// Morse code data structure 
 pub enum Pulse {
     Short,
     Long
@@ -17,6 +14,11 @@ impl Pulse {
     }
 }
 
+type Letter = Vec<Pulse>;
+
+type Message = Vec<Letter>;
+
+// Trait to convert to morse code
 trait MorseCode {
     fn to_morse_code(&self) -> Message; 
 }
@@ -24,36 +26,35 @@ trait MorseCode {
 impl MorseCode for String {
     fn to_morse_code(&self) -> Message { 
         let mut morse_message: Message = vec!();
-        let upper_string = self.to_uppercase();
     
-        for item in upper_string.chars() {
+        for item in self.chars() {
             let code =  match item {
-                'A' => vec![Pulse::Short, Pulse::Long],
-                'B' => vec![Pulse::Long, Pulse::Short, Pulse::Short, Pulse::Short],
-                'C' => vec![Pulse::Long, Pulse::Short, Pulse::Long, Pulse::Short],
-                'D' => vec![Pulse::Long, Pulse::Short, Pulse::Short],
-                'E' => vec![Pulse::Short],
-                'F' => vec![Pulse::Short, Pulse::Short, Pulse::Long, Pulse::Short],
-                'G' => vec![Pulse::Long, Pulse::Long, Pulse::Short],
-                'H' => vec![Pulse::Short, Pulse::Short, Pulse::Short, Pulse::Short],
-                'I' => vec![Pulse::Short, Pulse::Short],
-                'J' => vec![Pulse::Short, Pulse::Long, Pulse::Long, Pulse::Long],
-                'K' => vec![Pulse::Long, Pulse::Short, Pulse::Long],
-                'L' => vec![Pulse::Short, Pulse::Long, Pulse::Short, Pulse::Short],
-                'M' => vec![Pulse::Long, Pulse::Long],
-                'N' => vec![Pulse::Long, Pulse::Short],
-                'O' => vec![Pulse::Long, Pulse::Long, Pulse::Long],
-                'P' => vec![Pulse::Short, Pulse::Long, Pulse::Long, Pulse::Short],
-                'Q' => vec![Pulse::Long, Pulse::Long, Pulse::Short, Pulse::Long],
-                'R' => vec![Pulse::Short, Pulse::Long, Pulse::Short],
-                'S' => vec![Pulse::Short, Pulse::Short, Pulse::Short],
-                'T' => vec![Pulse::Long],
-                'U' => vec![Pulse::Short, Pulse::Short, Pulse::Long],
-                'V' => vec![Pulse::Short, Pulse::Short, Pulse::Short, Pulse::Long],
-                'W' => vec![Pulse::Short, Pulse::Long, Pulse::Long],
-                'X' => vec![Pulse::Long, Pulse::Short, Pulse::Short, Pulse::Long],
-                'Y' => vec![Pulse::Long, Pulse::Short, Pulse::Long, Pulse::Long],
-                'Z' => vec![Pulse::Long, Pulse::Long, Pulse::Short, Pulse::Short],
+                'A' | 'a' => vec![Pulse::Short, Pulse::Long],
+                'B' | 'b' => vec![Pulse::Long, Pulse::Short, Pulse::Short, Pulse::Short],
+                'C' | 'c' => vec![Pulse::Long, Pulse::Short, Pulse::Long, Pulse::Short],
+                'D' | 'd' => vec![Pulse::Long, Pulse::Short, Pulse::Short],
+                'E' | 'e' => vec![Pulse::Short],
+                'F' | 'f' => vec![Pulse::Short, Pulse::Short, Pulse::Long, Pulse::Short],
+                'G' | 'g' => vec![Pulse::Long, Pulse::Long, Pulse::Short],
+                'H' | 'h' => vec![Pulse::Short, Pulse::Short, Pulse::Short, Pulse::Short],
+                'I' | 'i' => vec![Pulse::Short, Pulse::Short],
+                'J' | 'j' => vec![Pulse::Short, Pulse::Long, Pulse::Long, Pulse::Long],
+                'K' | 'k' => vec![Pulse::Long, Pulse::Short, Pulse::Long],
+                'L' | 'l' => vec![Pulse::Short, Pulse::Long, Pulse::Short, Pulse::Short],
+                'M' | 'm' => vec![Pulse::Long, Pulse::Long],
+                'N' | 'n' => vec![Pulse::Long, Pulse::Short],
+                'O' | 'o' => vec![Pulse::Long, Pulse::Long, Pulse::Long],
+                'P' | 'p' => vec![Pulse::Short, Pulse::Long, Pulse::Long, Pulse::Short],
+                'Q' | 'q' => vec![Pulse::Long, Pulse::Long, Pulse::Short, Pulse::Long],
+                'R' | 'r' => vec![Pulse::Short, Pulse::Long, Pulse::Short],
+                'S' | 's' => vec![Pulse::Short, Pulse::Short, Pulse::Short],
+                'T' | 't' => vec![Pulse::Long],
+                'U' | 'u' => vec![Pulse::Short, Pulse::Short, Pulse::Long],
+                'V' | 'v' => vec![Pulse::Short, Pulse::Short, Pulse::Short, Pulse::Long],
+                'W' | 'w' => vec![Pulse::Short, Pulse::Long, Pulse::Long],
+                'X' | 'x' => vec![Pulse::Long, Pulse::Short, Pulse::Short, Pulse::Long],
+                'Y' | 'y' => vec![Pulse::Long, Pulse::Short, Pulse::Long, Pulse::Long],
+                'Z' | 'z' => vec![Pulse::Long, Pulse::Long, Pulse::Short, Pulse::Short],
                 _ => vec![]
             };
 
