@@ -108,14 +108,14 @@ mod test {
 
     #[test]
     fn ut_hand_21_more_one_ace() {
-        let input = vec![Card::Two, Card::Five, Card::Three, Card::Jack, Card::Ace];
+        let input = vec![Card::Two, Card::Four, Card::Three, Card::Queen, Card::Ace];
 
-        assert_eq!(exercise::get_hand_value(input), 21);
+        assert_eq!(exercise::get_hand_value(input), 20);
     }
 
     #[test]
     fn ut_hand_21_more_three_aces() {
-        let input = vec![Card::Two, Card::Ace, Card::Five, Card::Ace, Card::Jack, Card::Ace];
+        let input = vec![Card::Two, Card::Ace, Card::Five, Card::Ace, Card::King, Card::Ace];
 
         assert_eq!(exercise::get_hand_value(input), 20);
     }
