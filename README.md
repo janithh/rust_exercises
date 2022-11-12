@@ -17,3 +17,9 @@ This project is for Rust exercises
 0.6.0 - LeetCode : 217. Contains Duplicate
 
 0.7.0 - Exercise 4 : Case insensitive sort
+
+0.8.0 - Exercise 5 : Convert text to Morse code
+
+0.9.0 - Exercise 6 : Value of a hand of cards
+
+0.10.0 - Exercise 7 : Has a deadline been reached?
