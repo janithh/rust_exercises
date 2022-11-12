@@ -1,7 +1,6 @@
 
 const HAND_LIMIT: usize = 21;
 
-#[derive(PartialEq)]
 pub enum Card {
     Two,
     Three,
@@ -47,12 +46,10 @@ impl Hand {
         for card in &input {
             hand_value += card.value();
 
-            if *card == Card::Ace {
+            if let Card::Ace = *card {
                 ace_count += 1;               
             }
         }
-
-        println!("{hand_value}, {ace_count}");
 
         if hand_value > HAND_LIMIT {
             while ace_count != 0 {
@@ -108,16 +105,16 @@ mod test {
 
     #[test]
     fn ut_hand_21_more_one_ace() {
-        let input = vec![Card::Two, Card::Four, Card::Three, Card::Queen, Card::Ace];
+        let input = vec![Card::Four, Card::Seven, Card::Queen, Card::Nine, Card::Ace];
 
-        assert_eq!(exercise::get_hand_value(input), 20);
+        assert_eq!(exercise::get_hand_value(input), 31);
     }
 
     #[test]
     fn ut_hand_21_more_three_aces() {
-        let input = vec![Card::Two, Card::Ace, Card::Five, Card::Ace, Card::King, Card::Ace];
+        let input = vec![Card::Eight, Card::Ace, Card::Six, Card::Ace, Card::King, Card::Ace];
 
-        assert_eq!(exercise::get_hand_value(input), 20);
+        assert_eq!(exercise::get_hand_value(input), 27);
     }
 
     #[test]
