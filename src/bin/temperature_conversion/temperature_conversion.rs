@@ -7,12 +7,10 @@ pub enum Scale {
 }
 
 impl Scale {
-    fn to_string(&self) -> &str {
-        if let Scale::Celcius = self {
-            "Celcius"
-        }
-        else {
-            "Fahrenheit"
+    fn to_string(&self) -> &str {       
+        match self {
+            Scale::Celcius => "Celcius",
+            _ => "Fahrenheit"
         }
     } 
 }

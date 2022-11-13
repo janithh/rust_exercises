@@ -24,4 +24,4 @@ This project is for Rust exercises
 
 0.10.0 - Exercise 7 : Has a deadline been reached ?
 
-0.11.0 - Convert between Celcius and Fahrenheit
+0.11.0 - Exercise 8 : Convert between Celcius and Fahrenheit
