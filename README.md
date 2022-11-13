@@ -22,4 +22,6 @@ This project is for Rust exercises
 
 0.9.0 - Exercise 6 : Value of a hand of cards
 
-0.10.0 - Exercise 7 : Has a deadline been reached?
+0.10.0 - Exercise 7 : Has a deadline been reached ?
+
+0.11.0 - Convert between Celcius and Fahrenheit
