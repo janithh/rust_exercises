@@ -1,15 +1,15 @@
-use chrono::{Date, Local, TimeZone, LocalResult};
+use chrono::{DateTime, Local, TimeZone, LocalResult};
 
 #[derive(PartialEq, Debug)]
 pub struct ImportantEvent {
     event_name: String,
-    date: Date<Local>
+    date: DateTime<Local>
 }
 
 impl ImportantEvent {
-    fn new(input_name: &str, input_date: (i32, u32, u32)) -> Result<Self, &str> {
+    fn new(input_name: &str, input_date: (i32, u32, u32, u32, u32, u32)) -> Result<Self, &str> {
         let string_name = String::from(input_name);
-        let converted_date = Local.ymd_opt(input_date.0, input_date.1, input_date.2);
+        let converted_date = Local.with_ymd_and_hms(input_date.0, input_date.1, input_date.2, input_date.3, input_date.4, input_date.5);
 
         if let LocalResult::None = converted_date {
             return Err("Invalid Date information");            
@@ -28,7 +28,7 @@ trait Deadline {
 
 impl Deadline for ImportantEvent {
     fn is_expired(&self) -> bool {
-        self.date < Local::today()
+        self.date < Local::now()
     }
     
 }
@@ -39,7 +39,7 @@ impl Deadline for ImportantEvent {
 pub mod exercise {
     use super::{ImportantEvent, Deadline};
 
-    pub fn create_event(name: &str, date: (i32, u32, u32)) -> Option<ImportantEvent> {
+    pub fn create_event(name: &str, date: (i32, u32, u32, u32, u32, u32)) -> Option<ImportantEvent> {
         match ImportantEvent::new(name, date) {
             Ok(a) => Some(a),
             Err(b)          => {
@@ -63,50 +63,70 @@ pub mod exercise {
 
     #[test]
     fn ut_create_event_normal() {
-        let event = create_event("Test Event", (2021, 1, 1));
+        let event = create_event("Test Event", (2021, 1, 1, 19, 0, 0));
 
         assert_ne!(event, None);
     }
 
     #[test]
     fn ut_create_event_name_empty() {
-        let event = create_event("", (2021, 1, 1));
+        let event = create_event("", (2021, 1, 1, 19, 0, 0));
 
         assert_eq!(event, None);
     }
 
     #[test]
-    #[should_panic]
      fn ut_create_event_year_invalid() {
-        let event = create_event("Test Event", (-200000, 1, 1));
+        let event = create_event("Test Event", (-200000, 1, 1, 30, 0, 0));
 
         assert_eq!(event, None);
     }
 
     #[test]
     fn ut_create_event_month_invalid() {
-        let event = create_event("Test Event", (2021, 15, 1));
+        let event = create_event("Test Event", (2021, 15, 1, 19, 0, 0));
 
         assert_eq!(event, None);
     }
 
     #[test]
     fn ut_create_event_date_invalid() {
-        let event = create_event("Test Event", (2021, 1, 35));
+        let event = create_event("Test Event", (2021, 1, 35, 19, 0, 0));
+
+        assert_eq!(event, None);
+    }
+
+    #[test]
+    fn ut_create_event_hour_invalid() {
+        let event = create_event("Test Event", (2021, 1, 1, 30, 0, 0));
+
+        assert_eq!(event, None);
+    }
+
+    #[test]
+    fn ut_create_event_minute_invalid() {
+        let event = create_event("Test Event", (2021, 1, 1, 19, 100, 0));
+
+        assert_eq!(event, None);
+    }
+
+    #[test]
+    fn ut_create_event_second_invalid() {
+        let event = create_event("Test Event", (2021, 1, 1, 19, 0, 100));
 
         assert_eq!(event, None);
     }
 
     #[test]
     fn ut_check_status_valid() {
-        let event = create_event("Test Event", (2025, 1, 1));
+        let event = create_event("Test Event", (2025, 1, 1, 19, 0, 0));
 
         assert_eq!(check_status(event.unwrap()), true);
     }
 
     #[test]
     fn ut_check_status_expired() {
-        let event = create_event("Test Event", (2021, 1, 1));
+        let event = create_event("Test Event", (2021, 1, 1, 19, 0, 0));
 
         assert_eq!(check_status(event.unwrap()), false);
     }
