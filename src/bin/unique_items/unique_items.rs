@@ -19,18 +19,6 @@ pub mod exercise {
         unique_list
     }
 
-    pub fn get_unique_2<T>(input_list: &mut Vec<T>) 
-    where T: cmp::PartialOrd + Copy {
-
-    // for element in input_list {
-    //     match unique_list.iter().find(|&&x| x == *element) {
-    //         None => unique_list.push(element.clone()),
-    //         Some(_) => ()
-    //     };
-    // }
-
-    // unique_list
-    }
 }
 
 /*******************
