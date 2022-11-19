@@ -27,3 +27,5 @@ This project is for Rust exercises
 0.11.0 - Exercise 8 : Convert between Celcius and Fahrenheit
 
 0.12.0 - Exercise 9 : Sum a list of numbers with missing values
+
+0.13.0 - LeetCode : 347. Top K Frequent Elements
