@@ -8,17 +8,17 @@ pub struct ImportantEvent {
 
 impl ImportantEvent {
     fn new(input_name: &str, input_date: (i32, u32, u32, u32, u32, u32)) -> Result<Self, &str> {
-        let string_name = String::from(input_name);
+        let event_name = String::from(input_name);
         let converted_date = Local.with_ymd_and_hms(input_date.0, input_date.1, input_date.2, input_date.3, input_date.4, input_date.5);
 
         if let LocalResult::None = converted_date {
             return Err("Invalid Date information");            
         }
-        else if string_name.is_empty() {
+        else if event_name.is_empty() {
             return Err("Event name cannot be empty");
         }
 
-        Ok(ImportantEvent { event_name: string_name, date: converted_date.unwrap() })
+        Ok(ImportantEvent { event_name, date: converted_date.unwrap() })
     }    
 }
 

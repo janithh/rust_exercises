@@ -39,26 +39,26 @@ pub struct Hand {
 }
 
 impl Hand {
-    fn new(input: Vec<Card>) -> Self {
+    fn new(_cards: Vec<Card>) -> Self {
         let mut ace_count = 0;
-        let mut hand_value = 0;
+        let mut value = 0;
         
-        for card in &input {
-            hand_value += card.value();
+        for card in &_cards {
+            value += card.value();
 
             if let Card::Ace = *card {
                 ace_count += 1;               
             }
         }
 
-        if hand_value > HAND_LIMIT {
+        if value > HAND_LIMIT {
             while ace_count != 0 {
 
-                if hand_value < HAND_LIMIT {
+                if value < HAND_LIMIT {
                     break;
                 }
                 else {
-                    hand_value -= 10;
+                    value -= 10;
                 }
 
                 ace_count -= 1;
@@ -67,8 +67,8 @@ impl Hand {
 
 
         Hand {
-            _cards: input,
-            value: hand_value
+            _cards,
+            value
         }
     }
 

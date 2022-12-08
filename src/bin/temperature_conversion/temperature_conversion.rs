@@ -21,10 +21,10 @@ pub struct Temperature {
 }
 
 impl Temperature {
-    fn new(input_temp: f32, input_scale: Scale) -> Self {
+    fn new(degrees: f32, scale: Scale) -> Self {
         Temperature {
-            degrees: input_temp,
-            scale: input_scale
+            degrees,
+            scale
         }
     }
 
