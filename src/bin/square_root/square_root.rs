@@ -32,8 +32,6 @@ pub mod exercise {
 
 #[cfg(test)]
 mod test {
-    use crate::square_root::exercise::calculate;
-
     use super::exercise;
 
     #[test]
@@ -41,7 +39,7 @@ mod test {
         let input = 256;
         let precision = 0.001;
 
-        assert_eq!(calculate(input, precision), Some(16.0));
+        assert_eq!(exercise::calculate(input, precision), Some(16.0));
     }
 
     #[test]
@@ -49,7 +47,7 @@ mod test {
         let input = -256;
         let precision = 0.001;
 
-        assert_eq!(calculate(input, precision), None);
+        assert_eq!(exercise::calculate(input, precision), None);
     }
 
     #[test]
@@ -57,7 +55,7 @@ mod test {
         let input = 0;
         let precision = 0.001;
 
-        assert_eq!(calculate(input, precision), Some(0.0));
+        assert_eq!(exercise::calculate(input, precision), Some(0.0));
     }
 
     #[test]
@@ -65,7 +63,7 @@ mod test {
         let input = 300;
         let precision = 0.001;
 
-        assert_eq!(calculate(input, precision), Some(17.320507));
+        assert_eq!(exercise::calculate(input, precision), Some(17.320507));
     }
 
     #[test]
@@ -73,7 +71,7 @@ mod test {
         let input = 300;
         let precision = 1.0;
 
-        assert_eq!(calculate(input, precision), Some(17.341732));
+        assert_eq!(exercise::calculate(input, precision), Some(17.341732));
     }
 
     #[test]
@@ -81,6 +79,6 @@ mod test {
         let input = 300;
         let precision = -0.00001;
 
-        assert_eq!(calculate(input, precision), None);
+        assert_eq!(exercise::calculate(input, precision), None);
     }
 }
