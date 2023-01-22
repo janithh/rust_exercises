@@ -29,3 +29,5 @@ This project is for Rust exercises
 0.12.0 - Exercise 9 : Sum a list of numbers with missing values
 
 0.13.0 - LeetCode : 347. Top K Frequent Elements
+
+0.14.0 - Square root using Newton's mthod
