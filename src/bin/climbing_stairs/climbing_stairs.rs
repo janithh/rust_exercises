@@ -17,7 +17,7 @@ pub mod exercise {
                 count += 1;
             }
 
-            ret = value as u128;
+            ret = value;
         }
 
         ret
