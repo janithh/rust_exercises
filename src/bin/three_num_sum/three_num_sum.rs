@@ -5,7 +5,7 @@ pub mod exercise {
         let elements: usize = values.len();
 
         if elements < 3 {
-            print!("[three_num_sum::get_indexes] Array size is less. Size {}", elements);
+            println!("[three_num_sum::get_indexes] Array size is invalid. Size - {}", elements);
             return None;
         }
 
@@ -24,7 +24,10 @@ pub mod exercise {
             let mut right: usize = elements - 1;
             
             while left < right {
-                let temp_sum: i32 = *(hash_vec.get(count).unwrap()).1 + *(hash_vec.get(left).unwrap()).1 + *(hash_vec.get(right).unwrap()).1;
+                let key_value_count: (&usize, &i32) = *(hash_vec.get(count).unwrap());
+                let key_value_left: (&usize, &i32) = *(hash_vec.get(left).unwrap());
+                let key_value_right: (&usize, &i32) = *(hash_vec.get(right).unwrap());
+                let temp_sum: i32 = *key_value_count.1 + *key_value_left.1 + *key_value_right.1;
 
                 if temp_sum < sum {
                     left += 1;
@@ -33,7 +36,7 @@ pub mod exercise {
                     right -= 1;
                 }
                 else {
-                    let mut temp_result: Vec<i32> = vec![*(hash_vec.get(count).unwrap()).0 as i32, *(hash_vec.get(left).unwrap()).0 as i32, *(hash_vec.get(right).unwrap()).0 as i32];
+                    let mut temp_result: Vec<i32> = vec![*key_value_count.0 as i32, *key_value_left.0 as i32, *key_value_right.0 as i32];
                     temp_result.sort();
                     return Some((temp_result[0], temp_result[1], temp_result[2]));
                 }
@@ -43,6 +46,7 @@ pub mod exercise {
             count += 1;
         }
 
+        println!("[three_num_sum::get_indexes] Indexes not found. Sum - {}", sum);
         None
     }
 }
