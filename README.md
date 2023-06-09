@@ -33,3 +33,5 @@ This project is for Rust exercises
 0.14.0 - Square root using Newton's mthod
 
 0.15.0 - LeetCode : 70 : Climb stairs
+
+0.16.0 - LSEG Question : Calculate the indexes of three numbers in an array if sum is a given value
